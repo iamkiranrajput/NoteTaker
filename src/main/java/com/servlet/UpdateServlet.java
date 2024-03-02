@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -17,53 +16,42 @@ import com.entities.Note;
 import helper.FactoryProvider;
 
 
-public class SaveNoteServlet extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-//    public SaveNoteServlet() {
-//        super();
-//
-//    }
-//    
-    
-    
-	
+  
+    public UpdateServlet() {
+        super();
+    }
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		try {
-			//titlle content , fetch
-			
-			
 			String title=request.getParameter("title");
 			String content=request.getParameter("content");
 			
-			Note note =new Note(title, content, new Date());	
-//			System.out.println(note.getId());
-//			System.out.println(note.getContent());
+			int noteId=Integer.parseInt(request.getParameter("noteId").trim());
 			
-			Session s= FactoryProvider.getFactory().openSession();
+			
+			Session s=FactoryProvider.getFactory().openSession();
 			Transaction tx=s.beginTransaction();
-			s.save(note);
+			
+			Note note=s.get(Note.class, noteId);
+			
+			note.setTitle(title);
+			note.setContent(content);
+			note.setAddedDate(new Date());
+			
+			
 			
 			tx.commit();
 			s.close();
 			
-//			response.setContentType("text/html");
-			
-			
-			PrintWriter out=response.getWriter();
-			
-//			out.print("<script>alert('not submited');</script>");
-
-			out.print("<h1>Note added successfully</h1>"
-					+ "<a href='all-notes.jsp'>View all Notes</a>");
-			
-
+			response.sendRedirect("all-notes.jsp");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}
 
