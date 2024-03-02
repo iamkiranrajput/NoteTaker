@@ -24,13 +24,15 @@ This is a simple note-taking web application built using Hibernate for database 
 ## Setup Instructions
 
 1. Clone the repository to your local machine.
+   ```
    git clone https://github.com/iamkiranrajput/noteTaker.git
+   ```
 
-2. Import the project into your preferred IDE (Eclipse, IntelliJ, etc.).
-3. Ensure Maven dependencies are resolved. If not, manually resolve dependencies using `mvn install` command.
-4. Configure your database settings in `hibernate.cfg.xml` file.
-5. Run the project on your local server.
-6. Access the application through your web browser at `http://localhost:8080/noteTaker`.
+3. Import the project into your preferred IDE (Eclipse, IntelliJ, etc.).
+4. Ensure Maven dependencies are resolved. If not, manually resolve dependencies using `mvn install` command.
+5. Configure your database settings in `hibernate.cfg.xml` file.
+6. Run the project on your local server.
+7. Access the application through your web browser at `http://localhost:8080/noteTaker`.
 
 ## Usage
 
