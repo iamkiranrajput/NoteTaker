@@ -25,7 +25,7 @@ This is a simple note-taking web application built using Hibernate for database 
 
 1. Clone the repository to your local machine.
    ```
-   git clone https://github.com/iamkiranrajput/noteTaker.git
+   git clone https://github.com/iamkiranrajput/noteTaker.git 
    ```
 
 3. Import the project into your preferred IDE (Eclipse, IntelliJ, etc.).
